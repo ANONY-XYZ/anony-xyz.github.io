@@ -1,0 +1,66 @@
+﻿[
+    {
+        "id":  "001",
+        "prompt":  "Move the **teddy bear** to the left side of the **tree** and resize it to be smaller."
+    },
+    {
+        "id":  "002",
+        "prompt":  "Move the **person** on the right to sit further to the left **person**"
+    },
+    {
+        "id":  "003",
+        "prompt":  "Resize the blue and white plate to be larger and place it directly in front of the black cat."
+    },
+    {
+        "id":  "004",
+        "prompt":  "Move the chair to the left, change the color of the chair to blue and resize the chair to be smaller."
+    },
+    {
+        "id":  "005",
+        "prompt":  "Remove the **chicken** on the right side of the image, leaving the white **chicken** as the main focus."
+    },
+    {
+        "id":  "006",
+        "prompt":  "Remove the **dog**."
+    },
+    {
+        "id":  "007",
+        "prompt":  "Resize the mouse to be more compact and move it closer to the keyboard."
+    },
+    {
+        "id":  "008",
+        "prompt":  "Move the female duck from the right side to the center of the image."
+    },
+    {
+        "id":  "009",
+        "prompt":  "Change the color of the **bag** to red, remove the person."
+    },
+    {
+        "id":  "010",
+        "prompt":  "Change the color of the **basket** to blue, move the chair to the center of the scene."
+    },
+    {
+        "id":  "011",
+        "prompt":  "Remove the first and third **person** from the left side of the image, move the second person to the center of the image and resize the person to be smaller."
+    },
+    {
+        "id":  "012",
+        "prompt":  "Resize the **horse** on the right to be larger and move it closer to the **rock** near the lake."
+    },
+    {
+        "id":  "013",
+        "prompt":  "Edit the **pelican**\u0027s beak color to bright red while keeping the **post**\u0027s texture unchanged."
+    },
+    {
+        "id":  "014",
+        "prompt":  "Resize the **cat** near the **grass** to be larger and move it closer to the **person**."
+    },
+    {
+        "id":  "015",
+        "prompt":  "Remove the **chair**."
+    },
+    {
+        "id":  "016",
+        "prompt":  "Move the tiger to the right side of the image and then have the tiger cub follow it closely."
+    }
+]
