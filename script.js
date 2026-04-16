@@ -30,8 +30,53 @@ const videoSamples = [
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
+    initPaperButtonNotice();
     initVideoSamples();
 });
+
+let paperNoticeTimer = null;
+
+function initPaperButtonNotice() {
+    const paperButton = document.getElementById("paper-button");
+
+    if (!paperButton) return;
+
+    paperButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        showTopNotice("This paper is currently under double-blind review and will be released after the review process.");
+    });
+}
+
+function showTopNotice(message) {
+    let container = document.getElementById("notice-container");
+
+    if (!container) {
+        container = document.createElement("div");
+        container.id = "notice-container";
+        container.className = "notice-container";
+        document.body.appendChild(container);
+    }
+
+    let toast = container.querySelector(".notice-toast");
+
+    if (!toast) {
+        toast = document.createElement("div");
+        toast.className = "notice-toast";
+        container.appendChild(toast);
+    }
+
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+
+    if (paperNoticeTimer) {
+        clearTimeout(paperNoticeTimer);
+    }
+
+    paperNoticeTimer = setTimeout(() => {
+        toast.classList.remove("is-visible");
+        paperNoticeTimer = null;
+    }, 2600);
+}
 
 function initVideoSamples() {
     const galleries = [
