@@ -4,27 +4,23 @@
 
 const videoSamples = [
     {
-        id: "sample-1",
+        id: "sample1",
         title: "Video Sample 1",
-        src: "assets/examples/videos/sample-1.mp4",
         description: "Blurred or Missing Facial Visual Information"
     },
     {
-        id: "sample-2",
+        id: "sample2",
         title: "Video Sample 2",
-        src: "assets/examples/videos/sample-2.mp4",
         description: "Sudden Viewpoint Transition"
     },
     {
-        id: "sample-3",
+        id: "sample3",
         title: "Video Sample 3",
-        src: "assets/examples/videos/sample-3.mp4",
         description: "Multi-source Environmental Interference"
     },
     {
-        id: "sample-4",
+        id: "sample4",
         title: "Video Sample 4",
-        src: "assets/examples/videos/sample-4.mp4",
         description: "Competitive Interference Between Short Responses and Long Monologues"
     }
 ];
@@ -80,9 +76,9 @@ function showTopNotice(message) {
 
 function initVideoSamples() {
     const galleries = [
-        { id: "results-gallery-full", modelName: "Full" },
-        { id: "results-gallery-only-itc", modelName: "Only_ITC" },
-        { id: "results-gallery-only-isr", modelName: "Only_ISR" }
+        { id: "results-gallery-full", modelName: "Full", videoFile: "ours.mp4" },
+        { id: "results-gallery-only-itc", modelName: "Only_ITC", videoFile: "onlyT.mp4" },
+        { id: "results-gallery-only-isr", modelName: "Only_ISR", videoFile: "onlyS.mp4" }
     ];
 
     galleries.forEach((galleryConfig) => {
@@ -91,21 +87,24 @@ function initVideoSamples() {
         if (!gallery) return;
 
         videoSamples.forEach((item) => {
-            const card = createVideoCard(item, galleryConfig.modelName);
+            const card = createVideoCard(item, galleryConfig);
             gallery.appendChild(card);
         });
     });
 }
 
-function createVideoCard(video, modelName) {
+function createVideoCard(video, galleryConfig) {
     const card = document.createElement("div");
     card.className = "video-card";
 
+    // Construct video path: assets/examples/videos/sample/{sampleId}/{videoFile}
+    const videoSrc = `assets/examples/videos/sample/${video.id}/${galleryConfig.videoFile}`;
+
     card.innerHTML = `
         <div class="video-wrapper">
-            <div class="video-label">${modelName} | ${video.title}</div>
-            <video class="sample-video" controls preload="metadata">
-                <source src="${video.src}" type="video/mp4">
+            <div class="video-label">${galleryConfig.modelName} | ${video.title}</div>
+            <video class="sample-video" controls preload="metadata" playsinline>
+                <source src="${videoSrc}" type="video/mp4">
                 Your browser does not support HTML5 video.
             </video>
         </div>

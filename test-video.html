@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Video Test</title>
+    <style>
+        body { padding: 20px; font-family: Arial; }
+        video { 
+            width: 640px; 
+            height: auto; 
+            background: #000; 
+            border: 2px solid #ccc;
+            display: block;
+            margin: 20px 0;
+        }
+        .info { 
+            background: #f0f0f0; 
+            padding: 10px; 
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Video Codec Test</h1>
+    
+    <h2>Sample 1 - ours.mp4</h2>
+    <video id="video1" controls>
+        <source src="assets/examples/videos/sample/sample1/ours.mp4" type="video/mp4">
+    </video>
+    <div class="info" id="info1"></div>
+
+    <h2>Sample 1 - onlyT.mp4</h2>
+    <video id="video2" controls>
+        <source src="assets/examples/videos/sample/sample1/onlyT.mp4" type="video/mp4">
+    </video>
+    <div class="info" id="info2"></div>
+
+    <script>
+        function checkVideo(videoId, infoId) {
+            const video = document.getElementById(videoId);
+            const info = document.getElementById(infoId);
+            
+            video.addEventListener('loadedmetadata', () => {
+                info.innerHTML = `
+                    <strong>Metadata Loaded:</strong><br>
+                    Duration: ${video.duration}s<br>
+                    Video Width: ${video.videoWidth}px<br>
+                    Video Height: ${video.videoHeight}px<br>
+                    Ready State: ${video.readyState}
+                `;
+            });
+
+            video.addEventListener('error', (e) => {
+                info.innerHTML = `<strong style="color: red;">Error:</strong> ${video.error ? video.error.message : 'Unknown error'}`;
+                console.error('Video error:', video.error);
+            });
+
+            video.addEventListener('canplay', () => {
+                info.innerHTML += '<br><strong style="color: green;">✓ Can play</strong>';
+            });
+        }
+
+        checkVideo('video1', 'info1');
+        checkVideo('video2', 'info2');
+    </script>
+</body>
+</html>
